@@ -61,7 +61,11 @@ class ImageWrapper extends React.Component {
             {
               (photos.length > 0)
               ? photos.map((photo) => {
-                return <img className='photo' key={photo.id} src={photo.source} alt='' />
+                return (
+                  <a href={photo.url} key={photo.id} target="_blank">
+                    <img className='photo' key={photo.id} src={photo.source} alt='' />
+                  </a>
+                );
               })
               : <NotFound />
             }

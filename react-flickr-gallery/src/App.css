@@ -23,11 +23,10 @@ input::placeholder {
 .search-button {
   background-color: rgb(79, 149, 199);
   border-style: none;
-  border: 1px solid rgb(79, 149, 199);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  padding-top: 8.27px;
-  padding-bottom: 8.15px;
+  padding-top: 9px;
+  padding-bottom: 9px;
   width: 35px;
 }
 
@@ -71,8 +70,10 @@ svg {
   color: white;
 }
 
-.list-item:hover {
+.list-item:hover,
+.search-button:hover {
   background-color: rgb(16, 75, 129);
+  transition: all .3s ease-in-out;
 }
 
 .photo-heading {
@@ -91,5 +92,11 @@ svg {
   width: 210px;
   height: 140px;
   margin: 10px 10px;
+}
+
+.photo:hover {
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.329);
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05)
 }
 

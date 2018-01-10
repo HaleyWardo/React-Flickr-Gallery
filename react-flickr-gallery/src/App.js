@@ -1,8 +1,7 @@
 import {
   BrowserRouter,
   Route,
-  Switch,
-  NavLink
+  Switch
 } from 'react-router-dom';
 import React from 'react';
 
@@ -33,7 +32,6 @@ class App extends React.Component {
     return (
         <BrowserRouter>
           <div className='App'>
-            <SearchInput onSubmit={this.navigateToRoute} />
             <Navigation />
             <Switch>
               <Route path='/search/:query' component={ImageWrapper} />

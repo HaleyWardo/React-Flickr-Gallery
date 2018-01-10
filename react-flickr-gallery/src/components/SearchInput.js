@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 // Rename to Search Bar
 // Wraps the form
 // Passes the search value back up to the App.js
 // App.js can then decide what to do with the value entered in the box
 class SearchInput extends React.Component {
-  state = {
-    searchText: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchText: ''
+    };
   }
 
   onSearch = (e) => {
