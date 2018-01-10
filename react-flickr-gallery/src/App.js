@@ -10,6 +10,7 @@ import './App.css';
 //import components
 import ImageWrapper from './components/ImageWrapper';
 import Navigation from './components/Navigation';
+import PathNotFound from './components/PathNotFound';
 import SearchInput from './components/SearchInput';
 
 class App extends React.Component {
@@ -18,14 +19,6 @@ class App extends React.Component {
     this.state = {
       searchInput: ''
     };
-
-    this.navigateToRoute = this.navigateToRoute.bind(this);
-
-
-  }
-
-  navigateToRoute = (query) => {
-    window.location.assign(`/search/${query}`);
   }
 
   render() {
@@ -35,6 +28,7 @@ class App extends React.Component {
             <Navigation />
             <Switch>
               <Route path='/search/:query' component={ImageWrapper} />
+              <Route path='*' component={PathNotFound} />
             </Switch>
           </div>
         </BrowserRouter>

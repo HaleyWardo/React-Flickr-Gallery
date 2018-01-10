@@ -11,13 +11,17 @@ class SearchInput extends React.Component {
     };
   }
 
+  upperCaseFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   onSearch = (e) => {
     this.setState({ searchText: e.target.value });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onSubmit(this.state.searchText);
+    this.props.onSubmit(this.upperCaseFirstLetter(this.state.searchText));
   }
 
   render() {

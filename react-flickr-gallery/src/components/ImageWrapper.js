@@ -1,5 +1,5 @@
 import FetchImages from '../service/FetchImages';
-import NotFound from './NotFound';
+import ImageNotFound from './ImageNotFound';
 import React from 'react';
 
 class ImageWrapper extends React.Component {
@@ -67,7 +67,7 @@ class ImageWrapper extends React.Component {
                   </a>
                 );
               })
-              : <NotFound />
+              : <ImageNotFound />
             }
           </div>
         }
