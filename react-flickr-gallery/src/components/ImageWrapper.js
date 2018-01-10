@@ -1,30 +1,75 @@
-import React from 'react';
-import Photo from './Photo';
+import FetchImages from '../service/FetchImages';
 import NotFound from './NotFound';
+import React from 'react';
 
-const PhotoWrapper = props => {
+class ImageWrapper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      photos: [],
+      loading: true
+    };
+    // this.loadContent = this.loadContent.bind(this);
+  }
 
+  loadContent = (query) => {
+    this.setState({ loading: true });
 
-    const results = props.data;
-    let images;
-
-    if (results.length > 0) {
-        images = results.map((photo) =>
-            <Photo url={photo.source} key={photo.id} />
-        );
-    }  else {
-        images = <NotFound />
+    return FetchImages(query)
+      .then((photos) => {
+        this.setState({
+          photos: photos,
+          hasPhotos: photos && photos.length > 0,
+          loading: false
+      	});
+      })
     }
 
-    return (
-        <ul>
-            {images}
-        </ul>
-    );
+    componentDidMount = () => {
+      this.loadContent(this.props.match.params.query);
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+      const currentQuery = this.props.match.params.query;
+      const nextQuery = nextProps.match.params.query;
+
+      if(currentQuery !== nextQuery) {
+        this.loadContent(nextQuery);
+      }
+  }
+
+  render() {
+    const query = this.props.match.params.query;
+    const photos = this.state.photos;
+    let heading = null;
+
+    if (this.state.hasPhotos || this.state.loading ) {
+      heading =
+        <div>
+          <h1 className='photo-heading'>{query}</h1>
+        </div>;
+    }
+
+  	return (
+      <div>
+        {heading}
+        {
+          (this.state.loading)
+          ? <div className='loading'> </div>
+          :
+          <div>
+            {
+              (photos.length > 0)
+              ? photos.map((photo) => {
+                return <img className='photo' key={photo.id} src={photo.source} alt='' />
+              })
+              : <NotFound />
+            }
+          </div>
+        }
+    	</div>
+  	);
+  }
 }
 
-export default PhotoWrapper;
-
-
-
-
+export default ImageWrapper;
