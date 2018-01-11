@@ -19,6 +19,7 @@ body {
   border: 1px solid lightgrey;
   padding: 8px;
   margin-top: 60px;
+  margin-bottom: 20px;
   background-color: rgba(211, 211, 211, 0.29);
 }
 
@@ -61,22 +62,22 @@ svg {
   color: rgb(66, 63, 63);
 }
 
-.list-item {
+.list-item a {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(79, 149, 199);
   margin: 10px 20px 0 0;
   padding: 8px 15px;
   border-radius: 5px;
-  background-color: rgb(79, 149, 199);
   font-weight: bold;
   font-size: 15px;
   cursor: pointer;
 }
 
-.list-item a {
-  text-decoration: none;
-  color: white;
+.list-item .active{
+  background-color: rgb(16, 75, 129);
 }
 
-.list-item:hover,
 .search-button:hover {
   background-color: rgb(16, 75, 129);
   transition: all .3s ease-in-out;
@@ -85,7 +86,7 @@ svg {
 .photo-heading {
   font-size: 1.5em;
   font-weight: bold;
-  margin-top: 60px;
+  margin-top: 30px;
   color: rgb(66, 63, 63);
 }
 
