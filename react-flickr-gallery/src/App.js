@@ -10,7 +10,6 @@ import Home from './components/Home';
 import ImageWrapper from './components/ImageWrapper';
 import Navigation from './components/Navigation';
 import PathNotFound from './components/PathNotFound';
-import SearchInput from './components/SearchInput';
 
 class App extends React.Component {
   constructor(props) {

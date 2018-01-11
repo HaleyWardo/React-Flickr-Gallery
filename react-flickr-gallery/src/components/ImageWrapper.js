@@ -1,6 +1,7 @@
 import Capitalize from '../helpers/Capitalize';
 import FetchImages from '../service/FetchImages';
 import ImageNotFound from './ImageNotFound';
+import Image from './Image';
 import React from 'react';
 
 class ImageWrapper extends React.Component {
@@ -64,9 +65,7 @@ class ImageWrapper extends React.Component {
               (photos.length > 0)
               ? photos.map((photo) => {
                 return (
-                  <a href={photo.url} key={photo.id} target="_blank">
-                    <img className='photo' key={photo.id} src={photo.source} alt='' />
-                  </a>
+                  <Image id={photo.id} url={photo.url} source={photo.source} key={photo.id} />
                 );
               })
               : <ImageNotFound />
