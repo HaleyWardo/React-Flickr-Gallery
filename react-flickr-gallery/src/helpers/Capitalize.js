@@ -1,6 +1,5 @@
 /**
  * Capitalizes the first letter of a string.
- *
  * @param string
  */
 export default (string) => {

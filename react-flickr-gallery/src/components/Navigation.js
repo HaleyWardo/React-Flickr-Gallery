@@ -1,8 +1,14 @@
+// Import components
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import SearchInput from './SearchInput';
 
 class Navigation extends React.Component {
+
+  /**
+   * Navigates to a new search route based on user input
+   * @param query
+   */
   navigateToRoute = (query) => {
     window.location.assign(`/search/${query}`);
   }

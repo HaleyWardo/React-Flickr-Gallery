@@ -1,9 +1,11 @@
+// Import components
 import Capitalize from '../helpers/Capitalize';
 import FetchImages from '../service/FetchImages';
 import ImageNotFound from './ImageNotFound';
 import Image from './Image';
 import React from 'react';
 
+// Class component for all rendered images
 class ImageWrapper extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,10 @@ class ImageWrapper extends React.Component {
     };
   }
 
+  /**
+   * Fetches images from API and sets state for the component
+   * @param query
+   */
   loadContent = (query) => {
     this.setState({ loading: true });
 
@@ -26,6 +32,7 @@ class ImageWrapper extends React.Component {
     })
   }
 
+  // Called on inital launch
   componentDidMount = () => {
     this.loadContent(this.props.match.params.query);
   }

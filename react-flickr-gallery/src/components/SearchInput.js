@@ -8,10 +8,14 @@ class SearchInput extends React.Component {
     };
   }
 
+  // Updates the state with user input
   onSearch = (e) => {
     this.setState({ searchText: e.target.value });
   }
 
+  // Called when the form is submitted.
+  // Then calls the provider onSubmit function from props.
+  // Returns the user input to onSubmit.
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.onSubmit(this.state.searchText);
