@@ -1,3 +1,4 @@
+import Capitalize from '../helpers/Capitalize';
 import FetchImages from '../service/FetchImages';
 import ImageNotFound from './ImageNotFound';
 import React from 'react';
@@ -9,37 +10,38 @@ class ImageWrapper extends React.Component {
       photos: [],
       loading: true
     };
-    // this.loadContent = this.loadContent.bind(this);
   }
 
   loadContent = (query) => {
     this.setState({ loading: true });
 
     return FetchImages(query)
-      .then((photos) => {
-        this.setState({
-          photos: photos,
-          hasPhotos: photos && photos.length > 0,
-          loading: false
-      	});
-      })
+    .then((photos) => {
+      this.setState({
+        photos: photos,
+        hasPhotos: photos && photos.length > 0,
+        loading: false
+      });
+    })
+  }
+
+  componentDidMount = () => {
+    this.loadContent(this.props.match.params.query);
+  }
+
+  // Called when the route path changes, so we can
+  // update the images
+  componentWillReceiveProps = (nextProps) => {
+    const currentQuery = this.props.match.params.query;
+    const nextQuery = nextProps.match.params.query;
+
+    if(currentQuery !== nextQuery) {
+      this.loadContent(nextQuery);
     }
-
-    componentDidMount = () => {
-      this.loadContent(this.props.match.params.query);
-    }
-
-    componentWillReceiveProps = (nextProps) => {
-      const currentQuery = this.props.match.params.query;
-      const nextQuery = nextProps.match.params.query;
-
-      if(currentQuery !== nextQuery) {
-        this.loadContent(nextQuery);
-      }
   }
 
   render() {
-    const query = this.props.match.params.query;
+    const query = Capitalize(this.props.match.params.query);
     const photos = this.state.photos;
     let heading = null;
 

@@ -7,6 +7,4 @@ const Image = (images) => {
   );
 };
 
-
-
 export default Image;
